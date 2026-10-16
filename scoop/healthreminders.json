@@ -1,0 +1,20 @@
+{
+    "version": "1.0.0",
+    "description": "A little character walks across your Windows taskbar to remind you to drink water and stretch.",
+    "homepage": "https://github.com/jeffryrajan/HealthReminders",
+    "license": "MIT",
+    "notes": "Look for the blue water-drop icon next to the clock. It starts by itself each time you sign in to Windows.",
+    "url": "https://github.com/jeffryrajan/HealthReminders/releases/download/v1.0.0/HealthReminders.zip",
+    "hash": "affc543791ce125d07d65054c2b7b8789947b1a5a516eea032cc2d7135a524bb",
+    "extract_dir": "HealthReminders",
+    "persist": "settings.json",
+    "post_install": "& \"$scoopdir\\apps\\$app\\current\\install.ps1\"",
+    "pre_uninstall": "& \"$dir\\uninstall.ps1\"",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/jeffryrajan/HealthReminders/releases/download/v$version/HealthReminders.zip",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
