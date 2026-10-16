@@ -2,7 +2,9 @@
 
 A small Windows tray app. When it's time to drink water or stretch, a little character walks along the top of your taskbar to remind you.
 
-[![The character on the taskbar with the stretch and water reminders. Click to watch the 30-second demo on Instagram.](docs/demo.jpg)](https://www.instagram.com/reel/DejiANETDsj/)
+https://github.com/user-attachments/assets/8b98d956-49be-42fb-ae72-98cbfaa7af10
+
+Also on [Instagram](https://www.instagram.com/reel/DejiANETDsj/).
 
 **[⬇ Download the latest version (ZIP)](https://github.com/jeffryrajan/HealthReminders/archive/refs/heads/main.zip)**: free, open source, Windows 10 and 11. Install steps are [below](#install).
 
