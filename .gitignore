@@ -1,1 +1,16 @@
+# Per-user timer choices, written by the app
 settings.json
+
+# Preview renders (HealthReminders.ps1 -Preview <folder>)
+preview/
+
+# Release zips
+*.zip
+
+# Windows / OneDrive
+Thumbs.db
+desktop.ini
+~$*
+
+# Editors
+.vscode/
