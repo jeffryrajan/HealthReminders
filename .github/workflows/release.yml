@@ -1,0 +1,35 @@
+# Push a tag like v1.0.0 to publish a release with HealthReminders.zip attached.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build HealthReminders.zip
+        run: |
+          mkdir -p dist/HealthReminders
+          cp -r HealthReminders.ps1 material.ps1 install.ps1 uninstall.ps1 launch.vbs LICENSE README.md assets dist/HealthReminders/
+          cd dist && zip -qr9 HealthReminders.zip HealthReminders
+          sha256sum HealthReminders.zip | cut -d' ' -f1 > HealthReminders.zip.sha256
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          hash=$(cat dist/HealthReminders.zip.sha256)
+          cat > notes.md <<EOF
+          **Download [HealthReminders.zip](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/HealthReminders.zip)**, unzip it somewhere permanent, then right-click \`install.ps1\` and choose **Run with PowerShell**. Full steps are in the [README](https://github.com/${{ github.repository }}#install).
+
+          SHA-256: \`$hash\`
+          EOF
+          gh release create "${{ github.ref_name }}" dist/HealthReminders.zip dist/HealthReminders.zip.sha256 \
+            --title "Health reminders ${{ github.ref_name }}" --notes-file notes.md
